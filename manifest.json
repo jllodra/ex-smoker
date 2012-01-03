@@ -1,0 +1,14 @@
+{
+    "name": "ex-smoker",
+    "version": "1.0",
+
+    "browser_action": {
+        "default_icon": "images/icon.png",
+        "default_title": "Ex-Smoker tracking",
+        "default_popup": "popup.html"
+    },
+ 
+    "permissions": [
+        "http://twitter.com/*"
+    ]
+}
