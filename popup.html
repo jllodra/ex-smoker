@@ -7,24 +7,30 @@
         <script src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
         <link rel="stylesheet" href="jquery-ui/css/cupertino/jquery-ui-1.8.16.custom.css"/>
 
-        <script src="app/data.js" type="text/javascript"></script>
         <script src="app/singleton.js" type="text/javascript"></script>
+
+        <script src="app/data.js" type="text/javascript"></script>
+        <script src="app/ui.js" type="text/javascript"></script>
         <script src="app/app.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            // https://github.com/andyet/ConsoleDummy.js
+            var debug = true;
+            // Modified https://github.com/andyet/ConsoleDummy.js
             (function (con) {
                 function dummy() {};
                 for(var methods = "assert,count,debug,dir,dirxml,error,exception,group,groupCollapsed,groupEnd,info,log,markTimeline,profile,profileEnd,time,timeEnd,trace,warn".split(','), func; func = methods.pop();) {
-                    con[func] = con[func] || dummy;
+                    if (debug) con[func] = con[func] || dummy; else con[func] = dummy;
                 }
-            }(window.console = window.console || {})); 
+            }(window.console = window.console || {}));
         </script>
 
         <script type="text/javascript">
             $(document).ready(function() {
                 var app = App.get();
-                app.run();                
+                if (debug) {
+                    //app.clearData();
+                }
+                app.run();
             });
         </script>
 

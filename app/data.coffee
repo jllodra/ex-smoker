@@ -2,14 +2,17 @@ class Data
     
     constructor: (@sex, @age) ->
         @sex ?= "Male"
-        @age ?= 30
+        @age ?= "30"
         
     store: ->
-        console.log("Storing data")
-        randomAge = Math.random()
-        localStorage.setItem('age', randomAge)
-        return randomAge
-        
+        localStorage.setItem('sex', @sex)
+        localStorage.setItem('age', @age)
+
+    clear: ->
+        #debuggin' purposes
+        localStorage.setItem('sex', null)
+        localStorage.setItem('age', null)
+
     retrieve: ->
-        #sólo seteamos @age si getItem no es null
-        @age = localStorage.getItem('age')
+        @sex = localStorage.getItem('sex') if localStorage.getItem('sex')?
+        @age = localStorage.getItem('age') if localStorage.getItem('age')?

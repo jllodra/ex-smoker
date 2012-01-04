@@ -12,19 +12,25 @@ App = (function() {
   function App() {
     App.__super__.constructor.apply(this, arguments);
   }
-  App.data = null;
   App.prototype.init = function() {
     App.__super__.init.call(this, "App");
-    return this.data = new Data();
+    this.data = new Data();
+    return this.ui = new UI('#tabs', '#sex');
   };
   App.prototype.run = function() {
-    console.log("Running");
-    console.log(this.data.retrieve());
-    return this.buildUI();
+    console.log("App.run()");
+    return this.ui.build();
   };
-  App.prototype.buildUI = function() {
-    $('#tabs').tabs();
-    return $('#sex').buttonset();
+  App.prototype.clearData = function() {
+    return this.data.clear();
+  };
+  App.prototype.setData = function(data) {
+    this.data = data;
+    return this.data.store();
+  };
+  App.prototype.getData = function() {
+    this.data.retrieve();
+    return this.data;
   };
   return App;
 })();

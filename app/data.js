@@ -8,18 +8,24 @@ Data = (function() {
       this.sex = "Male";
     }
     if ((_ref2 = this.age) == null) {
-      this.age = 30;
+      this.age = "30";
     }
   }
   Data.prototype.store = function() {
-    var randomAge;
-    console.log("Storing data");
-    randomAge = Math.random();
-    localStorage.setItem('age', randomAge);
-    return randomAge;
+    localStorage.setItem('sex', this.sex);
+    return localStorage.setItem('age', this.age);
+  };
+  Data.prototype.clear = function() {
+    localStorage.setItem('sex', null);
+    return localStorage.setItem('age', null);
   };
   Data.prototype.retrieve = function() {
-    return this.age = localStorage.getItem('age');
+    if (localStorage.getItem('sex') != null) {
+      this.sex = localStorage.getItem('sex');
+    }
+    if (localStorage.getItem('age') != null) {
+      return this.age = localStorage.getItem('age');
+    }
   };
   return Data;
 })();

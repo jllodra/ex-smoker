@@ -1,19 +1,22 @@
 class App extends Singleton
-
-    @data = null;
-
+    
     init: ->
         super "App"
         @data = new Data()
+        @ui   = new UI('#tabs', '#sex')
 
     run: ->
-        console.log "Running"
-
-        console.log @data.retrieve()
-        #console.log @data.store()
-
-        @buildUI()
+        console.log "App.run()"
+        @ui.build()
     
-    buildUI: ->
-        $('#tabs').tabs()
-        $('#sex').buttonset()
+    clearData: ->
+        @data.clear()
+    
+    setData: (data) ->
+        @data = data
+        @data.store()
+    
+    getData: ->
+        @data.retrieve()
+        return @data
+    
