@@ -15,11 +15,12 @@ App = (function() {
   App.prototype.init = function() {
     App.__super__.init.call(this, "App");
     this.data = new Data();
-    return this.ui = new UI('#tabs', '#sex');
+    return this.ui = new UI();
   };
   App.prototype.run = function() {
     console.log("App.run()");
-    return this.ui.build();
+    this.ui.build();
+    return this.ui.fill(this.data);
   };
   App.prototype.clearData = function() {
     return this.data.clear();

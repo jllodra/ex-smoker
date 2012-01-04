@@ -3,11 +3,12 @@ class App extends Singleton
     init: ->
         super "App"
         @data = new Data()
-        @ui   = new UI('#tabs', '#sex')
+        @ui   = new UI()
 
     run: ->
         console.log "App.run()"
         @ui.build()
+        @ui.fill(@data)
     
     clearData: ->
         @data.clear()
