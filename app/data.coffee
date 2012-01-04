@@ -10,8 +10,7 @@ class Data
 
     clear: ->
         #debuggin' purposes
-        localStorage.setItem('sex', null)
-        localStorage.setItem('age', null)
+        localStorage.clear()
 
     retrieve: ->
         @sex = localStorage.getItem('sex') if localStorage.getItem('sex')?

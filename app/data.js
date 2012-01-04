@@ -16,8 +16,7 @@ Data = (function() {
     return localStorage.setItem('age', this.age);
   };
   Data.prototype.clear = function() {
-    localStorage.setItem('sex', null);
-    return localStorage.setItem('age', null);
+    return localStorage.clear();
   };
   Data.prototype.retrieve = function() {
     if (localStorage.getItem('sex') != null) {
