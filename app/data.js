@@ -11,6 +11,18 @@ Data = (function() {
       this.age = "30";
     }
   }
+  Data.prototype.getSex = function() {
+    return this.sex;
+  };
+  Data.prototype.setSex = function(sex) {
+    return this.sex = sex;
+  };
+  Data.prototype.getAge = function() {
+    return this.age;
+  };
+  Data.prototype.setAge = function(age) {
+    return this.age = age;
+  };
   Data.prototype.store = function() {
     localStorage.setItem('sex', this.sex);
     return localStorage.setItem('age', this.age);

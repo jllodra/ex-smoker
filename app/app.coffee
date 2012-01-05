@@ -7,8 +7,9 @@ class App extends Singleton
 
     run: ->
         console.log "App.run()"
-        @ui.build()
-        @ui.fill(@data)
+        @data.retrieve()
+        console.log @data
+        @ui.build(@data)
     
     clearData: ->
         @data.clear()

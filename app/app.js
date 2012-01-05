@@ -19,8 +19,9 @@ App = (function() {
   };
   App.prototype.run = function() {
     console.log("App.run()");
-    this.ui.build();
-    return this.ui.fill(this.data);
+    this.data.retrieve();
+    console.log(this.data);
+    return this.ui.build(this.data);
   };
   App.prototype.clearData = function() {
     return this.data.clear();

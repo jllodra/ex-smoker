@@ -1,19 +1,19 @@
 class UI
 
-    constructor: () ->
+    constructor: ->
+        @data = null
         @tabs = $('#tabs')
         @sex = $('#sex')
         @age_slider = $('#age_slider')
         @age_value = $('#age_value')
         
-    build: ->
+    build: (data) ->
+        @data = data
         @init_tabs()
         @init_sex()
         @init_age()
-        
-    fill: (data) ->
-        @fill_sex(data.sex)
-        @fill_age(data.age)
+        @fill_sex(@data.sex)
+        @fill_age(@data.age)
     
     init_tabs: ->
         @tabs.tabs()
@@ -27,9 +27,11 @@ class UI
         @age_slider.slider(
             min: 1
             max: 100
-            value: 19
-            slide: (event, s) ->
+            value: @data.getAge()
+            slide: (event, s) =>
                 $('#amount').val s.value
+                @data.setAge(s.value)
+                @data.store()
             )
         $('#amount').val $('#age_slider').slider 'value'
     
