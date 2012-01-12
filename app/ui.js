@@ -17,7 +17,11 @@ UI = (function() {
     return this.fill_age(this.data.age);
   };
   UI.prototype.init_tabs = function() {
-    return this.tabs.tabs();
+    var randomDisease, randomIndex;
+    this.tabs.tabs();
+    randomIndex = Math.floor(Math.random() * Disease.prototype.DISEASES.length);
+    randomDisease = Disease.prototype.DISEASES[randomIndex];
+    return $('#disease').html(randomDisease);
   };
   UI.prototype.init_sex = function() {
     return this.sex.buttonset();

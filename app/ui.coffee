@@ -17,6 +17,9 @@ class UI
     
     init_tabs: ->
         @tabs.tabs()
+        randomIndex = Math.floor Math.random()*Disease::DISEASES.length
+        randomDisease = Disease::DISEASES[randomIndex]
+        $('#disease').html randomDisease
         
     init_sex: ->
         @sex.buttonset()
